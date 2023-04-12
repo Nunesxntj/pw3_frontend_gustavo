@@ -48,6 +48,53 @@ const axios = require('axios').default;
         });
     });
 
+    //EDITAR
+
+app.get('/editarCarro/:cod_carro', (req, res)=>{
+
+    let {cod_carro} = req.params
+    
+    urlListarCarroPK = `http://localhost:3000/listarCarroPK/${cod_carro}`
+
+    axios.get(urlListarCarroPK)
+    .then((response)=>{
+        // console.log(response.data);
+        let carro = response.data;
+        res.render('categoria/editarCarro.ejs', {carro});
+    })
+    
+})
+
+
+// EDITAR
+
+app.post('/editarCarro', (req, res)=>{
+
+    let urlEditar = 'http://localhost:3000/alterarCarro'
+
+    axios.put(urlEditar, req.body)
+    .then((response)=>{
+        res.redirect('/listagemCarro')
+    })
+})
+
+app.get('/excluirCarro/:cod_carro', (req, res)=>{
+    console.log(req.params);
+ 
+     let {cod_carro} = req.params;
+ 
+     const urlExcluirCarro = `http://localhost:3000/excluirCarro/${cod_carro}`;
+ 
+     axios.delete(urlExcluirCarro)
+     .then((response)=>{
+         res.redirect('/listagemCarro');
+     });
+     
+ });
+ 
+
+/* FIM DAS ROTAS DE CATEGORIA */
+
 
 
     /* FIM DAS ROTAS DE CATEGORIA */

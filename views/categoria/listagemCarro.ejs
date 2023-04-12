@@ -15,9 +15,16 @@
         <p> <%= carros.modelo_carro %>  </p>
         <p> <%= carros.nome_carro %> </p>
         </div>
-        <% }) %> 
+
+        <div class="btn-group mr-2">
+            <a href="/editarCarro/<%= carros.cod_carro %>" class="btn btn-success btn-sm mr-2 ml-2">EDITAR</a>
+            <a href="/excluirCarro/<%= carros.cod_carro %>" class="btn btn-danger btn-sm mr-2">EXCLUIR</a>
+        </div>
+        <% }) %>
 </div>
 
 </body>
+
+<%- include('../partials/footer.ejs') %>
 
 </html>
